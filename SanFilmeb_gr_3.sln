@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieDataJsonCreator", "MovieDataJsonCreator\MovieDataJsonCreator.csproj", "{07E69505-3B3A-4F9E-AEA9-81DA42E0FE7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SanFilmoteka", "SanFilmoteka\SanFilmoteka.csproj", "{B0BD663A-FD8C-40E1-9403-650D31685C23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{07E69505-3B3A-4F9E-AEA9-81DA42E0FE7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07E69505-3B3A-4F9E-AEA9-81DA42E0FE7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07E69505-3B3A-4F9E-AEA9-81DA42E0FE7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07E69505-3B3A-4F9E-AEA9-81DA42E0FE7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0BD663A-FD8C-40E1-9403-650D31685C23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0BD663A-FD8C-40E1-9403-650D31685C23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0BD663A-FD8C-40E1-9403-650D31685C23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0BD663A-FD8C-40E1-9403-650D31685C23}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {073CF492-C04A-4F6F-A3E7-7C8C943A6759}
+	EndGlobalSection
+EndGlobal
