@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SanFilmotekaCommon;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -27,7 +28,7 @@ namespace MovieDataJsonCreator
                 if (!string.IsNullOrEmpty(line) && !string.IsNullOrWhiteSpace(line))
                 {
                     var parts = line.Split("\t");
-                    if (parts.Length == 10)
+                    if (parts.Length == 11)
                     {
                         result.Add(CreateMovie(parts));
                     }
@@ -44,27 +45,18 @@ namespace MovieDataJsonCreator
             {
                 Id = Guid.NewGuid().ToString(),
                 Title = parts[0],
-                OriginalTitle = parts[1],
-                Director = parts[2],
-                Genre = parts[3],
-                Screenplay = parts[4],
-                ReleaseYear = int.TryParse(parts[5], out int y) ? y : 2000,
-                Trailer = parts[8],
-                Description = parts[9]
+                ReleaseDate = Convert.ToDateTime(parts[1]),
+                Description = parts[2],
+                Genre= parts[8],
+                Image= parts[9],
+                Trailer= parts[10],
             };
 
-            var actors = parts[6].Split(",");
-            foreach (var actor in actors)
-            {
-                movie.Cast.Add(actor.Trim());
-            }
-
-            var images = parts[7].Split(",");
-            foreach (var img in images)
-            {
-                movie.Images.Add(img.Trim());
-            }
-
+            movie.Cast.Add(parts[3]);
+            movie.Cast.Add(parts[4]);
+            movie.Cast.Add(parts[5]);
+            movie.Cast.Add(parts[6]);
+            movie.Cast.Add(parts[7]);
             return movie;
         }
     }

@@ -1,9 +1,24 @@
 ﻿@page "/"
+@using SanFilmotekaCommon;
+@inject IMovieService Service
 
-<PageTitle>Index</PageTitle>
+@if (Movies != null)
+{
+    @foreach (var movie in Movies)
+    {
+        <div>@movie.Title</div>
+    }
+}
 
-<h1>Hello, world!</h1>
 
-Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code {
+
+    IEnumerable<Movie> Movies { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Movies = Service.GetRandomMovies();
+    }
+
+}

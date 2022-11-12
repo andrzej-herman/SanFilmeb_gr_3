@@ -1,8 +1,10 @@
-﻿@page "/fetchdata"
+﻿@page "/chairs"
+@inject IMovieService Service
 
 <PageTitle>Weather forecast</PageTitle>
 
 @using SanFilmoteka.Data
+@using SanFilmotekaCommon;
 @inject WeatherForecastService ForecastService
 
 <h1>Weather forecast</h1>
@@ -44,5 +46,6 @@ else
     protected override async Task OnInitializedAsync()
     {
         forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+        var randomMovies = Service.GetRandomMovies();
     }
 }

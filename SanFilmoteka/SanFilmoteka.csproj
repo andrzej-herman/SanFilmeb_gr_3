@@ -10,4 +10,8 @@
     <Folder Include="wwwroot\data\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SanFilmotekaCommon\SanFilmotekaCommon.csproj" />
+  </ItemGroup>
+
 </Project>

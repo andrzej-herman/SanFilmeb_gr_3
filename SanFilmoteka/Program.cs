@@ -1,13 +1,14 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using SanFilmoteka.Data;
+using SanFilmotekaCommon;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
+//builder.Services.AddSingleton<IMovieService, MovieService>();
 
 var app = builder.Build();
 
