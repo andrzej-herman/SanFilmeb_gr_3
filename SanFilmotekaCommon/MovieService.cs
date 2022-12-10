@@ -18,35 +18,79 @@ namespace SanFilmotekaCommon
         private IEnumerable<Movie> Movies { get; set; }
         private Random Random { get; set; }
 
+        public IEnumerable<string> GetCategories()
+        {
+            return Movies.Select(m => m.Genre).Distinct().OrderBy(c => c);
+        }
+
+        public Movie GetMovieById(string id)
+        {
+            return Movies.FirstOrDefault(m => m.Id == id);
+        }
+
+        public IEnumerable<SimpleMovie> GetMoviesByCategory(string category)
+        {
+            return Movies.Where(m => m.Genre == category).Select(m => Map(m));
+        }
+
+        public IEnumerable<SimpleMovie> GetMoviesByTitleOrActor(string search)
+        {
+            var ids = new List<string>();
+            var movies = new List<Movie>();
+            foreach (var m in Movies.Where(m => m.Title.Contains(search)))
+            {
+                if (!ids.Contains(m.Id))
+                {
+                    ids.Add(m.Id);
+                    movies.Add(m);
+                }
+            }
+
+            foreach (var m in Movies)
+            {
+                foreach (var c in m.Cast)
+                {
+                    if (c.Contains(search))
+                    {
+                        if (!ids.Contains(m.Id))
+                        {
+                            ids.Add(m.Id);
+                            movies.Add(m);
+                        }
+                    }
+                }
+            }
+
+            return movies.Select(m => Map(m));
+        }
+
+        public IEnumerable<SimpleMovie> GetRandomMovies()
+        {
+            return Movies.OrderBy(m => Random.Next()).Take(4).Select(m => Map(m));
+        }
+
         private void GetMoviesFromJson()
         {
             var json = File.ReadAllText("wwwroot\\data\\baza_filmow.json");
             Movies = JsonConvert.DeserializeObject<IEnumerable<Movie>>(json);
         }
 
-        public IEnumerable<string> GetCategories()
+        private SimpleMovie Map(Movie movie)
         {
-            return Movies.Select(m => m.Genre).Distinct().OrderBy(c => c);
-        }
+            var sm =  new SimpleMovie
+            {
+                Id = movie.Id,
+                Title = movie.Title,
+                Genre= movie.Genre,
+                Image= movie.Image,
+            };
 
-        public IEnumerable<Movie> GetMoviesByActor(string actor)
-        {
-            return Movies.Where(m => m.Cast.Contains(actor));
-        }
+            if (movie.Description.Length >= 50)
+                sm.Descr= movie.Description.Substring(0, 50) + " ...";
+            else
+                sm.Descr= movie.Description + " ...";
 
-        public IEnumerable<Movie> GetMoviesByCategory(string category)
-        {
-            return Movies.Where(m => m.Genre == category);
-        }
-
-        public IEnumerable<Movie> GetMoviesByTitle(string title)
-        {
-            return Movies.Where(m => m.Title.ToLower().Contains(title.ToLower()));
-        }
-
-        public IEnumerable<Movie> GetRandomMovies()
-        {
-            return Movies.OrderBy(m => Random.Next()).Take(6);
+            return sm;
         }
     }
 }

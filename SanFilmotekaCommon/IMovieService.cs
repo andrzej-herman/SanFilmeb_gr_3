@@ -8,10 +8,10 @@ namespace SanFilmotekaCommon
 {
     public interface IMovieService
     {
-        IEnumerable<Movie> GetMoviesByCategory(string category);
-        IEnumerable<Movie> GetMoviesByTitle(string title);
-        IEnumerable<Movie> GetMoviesByActor(string actor);
-        IEnumerable<Movie> GetRandomMovies();
+        IEnumerable<SimpleMovie> GetMoviesByCategory(string category);
+        IEnumerable<SimpleMovie> GetMoviesByTitleOrActor(string search);
+        IEnumerable<SimpleMovie> GetRandomMovies();
         IEnumerable<string> GetCategories();
+        Movie GetMovieById(string id);
     }
 }

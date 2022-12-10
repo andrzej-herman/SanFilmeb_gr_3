@@ -1,24 +1,25 @@
 ﻿@page "/"
-@using SanFilmotekaCommon;
 @inject IMovieService Service
 
-@if (Movies != null)
-{
-    @foreach (var movie in Movies)
+<MovieHeader Title="Katalog filmowy"/>
+<div class="container">
+    <MovieSearchBar />
+    @if (MyMovies != null)
     {
-        <div>@movie.Title</div>
+        <MovieCatalog Movies="@MyMovies" />
     }
-}
 
+</div>
+<MovieFooter />
 
 
 @code {
+    public List<SimpleMovie> MyMovies { get; set; }
 
-    IEnumerable<Movie> Movies { get; set; }
-
+    // od tego zaczniemy nastepne zajęcia ...
+    // wyjaśnić dlczego tak zrobiłem
     protected override void OnInitialized()
     {
-        Movies = Service.GetRandomMovies();
+        MyMovies = Service.GetRandomMovies().ToList();
     }
-
 }

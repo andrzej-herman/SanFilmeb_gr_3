@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieDataJsonCreator", "Mov
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SanFilmoteka", "SanFilmoteka\SanFilmoteka.csproj", "{B0BD663A-FD8C-40E1-9403-650D31685C23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SanFilmotekaCommon", "SanFilmotekaCommon\SanFilmotekaCommon.csproj", "{672E4622-999F-4481-A7BC-07C062108A0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SanFilmotekaCommon", "SanFilmotekaCommon\SanFilmotekaCommon.csproj", "{672E4622-999F-4481-A7BC-07C062108A0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
